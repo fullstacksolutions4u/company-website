@@ -1,7 +1,7 @@
 export const company = {
   name: "Full Stack Solutions",
   short: "FSS",
-  tagline: "End-to-end software engineering, from idea to production.",
+  tagline: "End-to-end software engineering & AI Automation, from idea to production.",
   email: "fullstacksolutions101@gmail.com",
 };
 
