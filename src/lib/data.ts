@@ -2,9 +2,7 @@ export const company = {
   name: "Full Stack Solutions",
   short: "FSS",
   tagline: "End-to-end software engineering, from idea to production.",
-  email: "hello@fullstacksolutions.com",
-  phone: "+1 (555) 019-2837",
-  address: "500 Technology Drive, Suite 210, Austin, TX 78701",
+  email: "fullstacksolutions101@gmail.com",
 };
 
 export type NavLink = {
@@ -140,9 +138,7 @@ export const techStack = [
 export const stats = [
   { value: "8+ Years", label: "Of App Development Experience" },
   { value: "120+", label: "Web & Mobile Applications Developed" },
-  { value: "300+", label: "Solutions Built Delivered" },
   { value: "14+", label: "Distinct Industries Mastered" },
-  { value: "60+", label: "Strategic Technology Partnerships" },
 ];
 
 export type TechCategory = {

@@ -17,8 +17,8 @@ export default function Home() {
       {/* Hero */}
       <section className="relative">
         <div className="hero-wash absolute inset-0 overflow-hidden" aria-hidden />
-        <Container className="relative pb-24 pt-20 sm:pt-28">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
+        <Container className="relative pb-24 pt-10 sm:pt-14">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-8">
             <div>
               <p className="text-2xl font-light text-foreground sm:text-3xl">
                 Expertise gained from over

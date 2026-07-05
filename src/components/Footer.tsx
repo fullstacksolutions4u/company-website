@@ -57,16 +57,6 @@ export default function Footer() {
                   {company.email}
                 </a>
               </li>
-              <li className="flex items-start gap-2 text-sm text-muted">
-                <Icon name="phone" className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                <a href={`tel:${company.phone.replace(/[^+\d]/g, "")}`} className="hover:text-accent">
-                  {company.phone}
-                </a>
-              </li>
-              <li className="flex items-start gap-2 text-sm text-muted">
-                <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                <span>{company.address}</span>
-              </li>
             </ul>
           </div>
         </div>

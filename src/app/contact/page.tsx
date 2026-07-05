@@ -41,27 +41,6 @@ export default function ContactPage() {
                 {company.email}
               </a>
             </div>
-
-            <div className="rounded-2xl border border-border bg-surface p-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                <Icon name="phone" className="h-5 w-5" />
-              </div>
-              <h3 className="mt-4 text-sm font-semibold text-foreground">Phone</h3>
-              <a
-                href={`tel:${company.phone.replace(/[^+\d]/g, "")}`}
-                className="mt-1 block text-sm text-muted hover:text-accent"
-              >
-                {company.phone}
-              </a>
-            </div>
-
-            <div className="rounded-2xl border border-border bg-surface p-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                <Icon name="pin" className="h-5 w-5" />
-              </div>
-              <h3 className="mt-4 text-sm font-semibold text-foreground">Office</h3>
-              <p className="mt-1 text-sm text-muted">{company.address}</p>
-            </div>
           </div>
         </div>
       </Container>

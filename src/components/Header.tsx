@@ -22,7 +22,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center lg:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => {
             const active = pathname === link.href;
             if (!link.children) {
@@ -30,7 +30,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium transition-colors hover:text-foreground ${
+                  className={`whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:text-foreground ${
                     active ? "text-foreground" : "text-muted"
                   }`}
                 >
@@ -42,7 +42,7 @@ export default function Header() {
               <div key={link.href} className="group relative">
                 <Link
                   href={link.href}
-                  className={`flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium transition-colors hover:text-foreground ${
+                  className={`flex items-center gap-1 whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:text-foreground ${
                     active ? "text-foreground" : "text-muted"
                   }`}
                 >
