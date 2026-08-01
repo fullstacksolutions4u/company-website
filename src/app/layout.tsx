@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { company } from "@/lib/data";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
-  title: {
-    default: `${company.name} | Web & App Development Company`,
-    template: `%s | ${company.name}`,
-  },
-  description: company.tagline,
+  title: "Full Stack Solutions",
+  description:
+    "Full Stack Solutions delivers AI solutions, custom software, web and mobile app development, cloud, DevOps, UI/UX and QA services for modern businesses.",
+  keywords: [
+    "Full Stack Solutions",
+    "AI Solutions",
+    "Software Development",
+    "Web Development",
+    "Mobile App Development",
+    "Cloud Solutions",
+    "DevOps",
+    "UI UX Design",
+    "QA Testing",
+    "Enterprise Software"
+  ],
+  authors: [{ name: "Full Stack Solutions" }],
+  robots: "index, follow",
 };
 
 export default function RootLayout({
@@ -29,11 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="flex min-h-full flex-col bg-background text-foreground">
+    <html lang="en" className="h-full antialiased">
+      <body className="flex min-h-full flex-col bg-[#F7F8F5] text-[#171A17] antialiased">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
