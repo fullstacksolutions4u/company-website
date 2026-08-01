@@ -102,7 +102,7 @@ export default function Footer() {
             © {currentYear} Full Stack Solutions. All rights reserved.
           </span>
           <div className="flex gap-4">
-            <a href="https://www.linkedin.com/company/fullstacksolutions" target="_blank" rel="noopener noreferrer" className="transition hover:text-[#4D8B4F]">LinkedIn</a>
+            <a href="https://www.linkedin.com/company/full-stack-solutions-4u" target="_blank" rel="noopener noreferrer" className="transition hover:text-[#4D8B4F]">LinkedIn</a>
           </div>
         </div>
       </div>
