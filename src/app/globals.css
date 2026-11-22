@@ -2,13 +2,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fcfdfb;
-  --foreground: #171a17;
-  --mss-green: #4d8b4f;
-  --mss-brown: #6b2d1a;
-  --mss-brown-dark: #4a2417;
-  --mss-stone: #525b54;
-  --border: rgba(77, 139, 79, 0.15);
+  --background: #fcfcfc;
+  --foreground: #0a0a0a;
+  --mss-green: #111111;
+  --mss-brown: #404040;
+  --mss-brown-dark: #262626;
+  --mss-stone: #525252;
+  --border: rgba(0,0,0, 0.15);
 }
 
 @theme {
@@ -18,10 +18,38 @@
   --color-mss-brown: var(--mss-brown);
   --color-mss-brown-dark: var(--mss-brown-dark);
   --color-mss-stone: var(--mss-stone);
+
+  /* Semantic tokens used by components/ui.tsx and inner pages */
+  --color-background: #fcfcfc;
+  --color-foreground: #0a0a0a;
+  --color-surface: #ffffff;
+  --color-surface-2: #f2f2f2;
+  --color-border: #e0e0e0;
+  --color-muted: #525252;
+  --color-accent: #111111;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(0,0,0, 0.25);
+}
+
+:focus-visible {
+  outline: 2px solid var(--mss-green);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {
@@ -39,7 +67,7 @@ body {
   backdrop-filter: blur(34px) saturate(195%);
   box-shadow: inset 0 2px 2px rgba(255, 255, 255, 1),
               inset 0 -1px 1px rgba(255, 255, 255, 0.40),
-              0 24px 65px rgba(47, 67, 49, 0.14);
+              0 24px 65px rgba(0,0,0, 0.14);
   border-radius: 42px;
 }
 
@@ -60,20 +88,20 @@ body {
   align-items: center;
   justify-content: space-between;
   border-radius: 9999px;
-  background: linear-gradient(90deg, #3f7843, #79b97d);
+  background: linear-gradient(90deg, #111111, #525252);
   padding: 12px 24px;
   font-size: 13px;
   font-weight: 600;
   color: #ffffff;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35),
-              0 16px 38px rgba(77, 139, 79, 0.13);
+              0 16px 38px rgba(0,0,0, 0.13);
   transition: all 0.3s ease;
 }
 
 .glass-button-primary:hover {
   transform: translateY(-4px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35),
-              0 20px 48px rgba(77, 139, 79, 0.24);
+              0 20px 48px rgba(0,0,0, 0.24);
 }
 
 .glass-button-secondary {
@@ -87,13 +115,18 @@ body {
   padding: 12px 24px;
   font-size: 13px;
   font-weight: 600;
-  color: #426a45;
+  color: #262626;
   backdrop-filter: blur(35px);
   box-shadow: inset 3px 3px 5px rgba(255, 255, 255, 1),
-              0 15px 35px rgba(60, 75, 62, 0.08);
+              0 15px 35px rgba(0,0,0, 0.08);
   transition: all 0.3s ease;
 }
 
 .glass-button-secondary:hover {
   transform: translateY(-4px);
+}
+
+/* Monochrome theme: desaturate all photography */
+img {
+  filter: grayscale(1);
 }

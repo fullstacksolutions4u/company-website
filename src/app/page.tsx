@@ -33,7 +33,7 @@ const whyChooseUs = [
     title: "Innovation",
     description: "Building future-ready software using modern technologies and AI-driven solutions.",
     icon: (
-      <svg className="h-6 w-6 text-[#4D8B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+      <svg className="h-6 w-6 text-[#111111]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     )
@@ -41,9 +41,9 @@ const whyChooseUs = [
   {
     id: "why-2",
     title: "Expert Team",
-    description: "Highly skilled engineers delivering enterprise-grade software with centuries of combined experience.",
+    description: "Highly skilled engineers delivering enterprise-grade software with deep, hands-on experience across industries.",
     icon: (
-      <svg className="h-6 w-6 text-[#4D8B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+      <svg className="h-6 w-6 text-[#111111]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
       </svg>
     )
@@ -53,8 +53,8 @@ const whyChooseUs = [
     title: "Agile Delivery",
     description: "Fast, transparent and customer-focused development cycles that ensure your product hits the market sooner.",
     icon: (
-      <svg className="h-6 w-6 text-[#4D8B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      <svg className="h-6 w-6 text-[#111111]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
       </svg>
     )
   },
@@ -63,7 +63,7 @@ const whyChooseUs = [
     title: "Latest Tech",
     description: "Modern AI, Cloud, DevOps and scalable architectures built on the world's most stable stacks.",
     icon: (
-      <svg className="h-6 w-6 text-[#4D8B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+      <svg className="h-6 w-6 text-[#111111]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
       </svg>
     )
@@ -73,7 +73,7 @@ const whyChooseUs = [
     title: "Scalable Solutions",
     description: "Applications designed to grow with your business, supporting millions of users without missing a beat.",
     icon: (
-      <svg className="h-6 w-6 text-[#4D8B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+      <svg className="h-6 w-6 text-[#111111]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     )
@@ -83,7 +83,7 @@ const whyChooseUs = [
     title: "24/7 Support & Partnership",
     description: "Reliable long-term partnership with continuous maintenance, monitoring and technical support. We act as an extension of your own team.",
     icon: (
-      <svg className="h-6 w-6 text-[#4D8B4F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+      <svg className="h-6 w-6 text-[#111111]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
       </svg>
     )
@@ -157,7 +157,6 @@ const caseStudies = [
 export default function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [serviceIndex, setServiceIndex] = useState(0);
-  const [blogs, setBlogs] = useState<any[]>([]);
 
   // Form states
   const [name, setName] = useState("");
@@ -174,18 +173,6 @@ export default function Home() {
     const serviceInterval = setInterval(() => {
       setServiceIndex((prev) => (prev + 1) % rotatingServices.length);
     }, 2800);
-
-    // Fetch live blogs from msstechno API
-    fetch("https://websiteapi-backend-git-642918032467.asia-south1.run.app/blocks/approved?page=1&page_size=3")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.dates) {
-          // Extract first 3 blocks
-          const allBlocks = data.dates.flatMap((d: any) => d.blocks);
-          setBlogs(allBlocks.slice(0, 3));
-        }
-      })
-      .catch((err) => console.error("Error fetching blogs:", err));
 
     return () => {
       clearInterval(slideInterval);
@@ -214,22 +201,17 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden bg-[#171a17] text-white py-20 px-6 lg:px-8">
+      <section className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden bg-[#0a0a0a] text-white py-20 px-6 lg:px-8">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-cover bg-center transition-all duration-1000 opacity-30 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80')]" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#4D8B4F]/20 via-[#6B2D1A]/25 to-black/80 mix-blend-multiply" />
+          <div className="absolute inset-0 grayscale bg-cover bg-center transition-all duration-1000 opacity-30 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80')]" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#111111]/20 via-[#404040]/25 to-black/80 mix-blend-multiply" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl w-full grid grid-cols-1 gap-12 lg:grid-cols-12 items-center">
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <span className="inline-flex max-w-max items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-[#76C76B] shadow-[0_0_10px_#76C76B]" />
-              {heroSlides[slideIndex].badge}
-            </span>
-
             <h1 className="text-4xl font-serif font-bold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1] min-h-[160px] sm:min-h-[140px]">
               Building Intelligent{" "}
-              <span className="text-[#A3D99D]">Solutions</span>{" "}
+              <span className="text-[#d4d4d4]">Solutions</span>{" "}
               <span className="block sm:inline text-white/95">
                 with {rotatingServices[serviceIndex]}
               </span>
@@ -242,10 +224,10 @@ export default function Home() {
             <div className="mt-4 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" })}
-                className="group relative flex items-center justify-between gap-5 rounded-full border border-[#3D7C41] bg-gradient-to-b from-[#4FA653] to-[#2E6B32] pl-7 pr-3 py-2.5 text-xs font-bold text-white tracking-wide shadow-[inset_0_1px_2px_rgba(255,255,255,0.45),0_10px_25px_rgba(79,166,83,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02]"
+                className="group relative flex items-center justify-between gap-5 rounded-full border border-[#262626] bg-gradient-to-b from-[#404040] to-[#000000] pl-7 pr-3 py-2.5 text-xs font-bold text-white tracking-wide shadow-[inset_0_1px_2px_rgba(255,255,255,0.45),0_10px_25px_rgba(0,0,0,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02]"
               >
                 Free Consultation
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#2E6B32] shadow-sm transition-transform duration-300 group-hover:translate-x-0.5">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-[#000000] shadow-sm transition-transform duration-300 group-hover:translate-x-0.5">
                   <svg className="h-4 w-4 stroke-[2.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
@@ -268,17 +250,17 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section id="why-us" className="py-24 bg-[#F7F8F5] text-[#171A17] px-6 lg:px-8">
+      <section id="why-us" className="py-24 bg-[#f6f6f6] text-[#0a0a0a] px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center flex flex-col items-center gap-3">
-            <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#38573D]">
-              <span className="h-2 w-2 rounded-full bg-[#79C968]" />
+            <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#262626]">
+              <span className="h-2 w-2 rounded-full bg-[#737373]" />
               Why Full Stack Solutions
             </span>
             <h2 className="mt-2 font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
-              Why Businesses Choose <span className="italic text-[#4D8B4F]">Full Stack Solutions</span>
+              Why Businesses Choose <span className="italic text-[#111111]">Full Stack Solutions</span>
             </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#526057]">
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#525252]">
               We combine innovation, technical excellence, and customer-first thinking to build digital solutions that help businesses move faster and scale with confidence.
             </p>
           </div>
@@ -290,11 +272,11 @@ export default function Home() {
                 className="group relative flex flex-col justify-between rounded-[32px] border border-white bg-white/40 p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/65 hover:shadow-md cursor-pointer"
               >
                 <div>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#4D8B4F]/10 text-[#4D8B4F] mb-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#111111]/10 text-[#111111] mb-6">
                     {item.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-[#171A17]">{item.title}</h3>
-                  <p className="mt-3 text-xs leading-relaxed text-[#526057]">{item.description}</p>
+                  <h3 className="text-lg font-bold text-[#0a0a0a]">{item.title}</h3>
+                  <p className="mt-3 text-xs leading-relaxed text-[#525252]">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -303,16 +285,16 @@ export default function Home() {
       </section>
 
       {/* Solutions Showcase */}
-      <section id="solutions" className="py-24 bg-[#FCFDFB] text-[#171A17] px-6 lg:px-8 border-t border-[#F2F5F0]">
+      <section id="solutions" className="py-24 bg-[#fcfcfc] text-[#0a0a0a] px-6 lg:px-8 border-t border-[#efefef]">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
             <div className="flex flex-col gap-3">
-              <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#38573D] max-w-max">
-                <span className="h-2 w-2 rounded-full bg-[#79C968]" />
+              <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#262626] max-w-max">
+                <span className="h-2 w-2 rounded-full bg-[#737373]" />
                 Our Solutions
               </span>
               <h2 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
-                Engineering <span className="italic text-[#4D8B4F]">Beyond</span> Technology
+                Engineering <span className="italic text-[#111111]">Beyond</span> Technology
               </h2>
             </div>
             <Link
@@ -330,17 +312,17 @@ export default function Home() {
             {solutionsShowcase.map((sol, idx) => (
               <div
                 key={idx}
-                className="group relative flex flex-col justify-between rounded-[32px] border border-white/60 bg-white/20 p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#4D8B4F]/40 hover:shadow-md"
+                className="group relative flex flex-col justify-between rounded-[32px] border border-white/60 bg-white/20 p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[#111111]/40 hover:shadow-md"
               >
                 <div>
-                  <h3 className="text-lg font-bold text-[#171A17]">{sol.title}</h3>
-                  <p className="mt-3 text-xs leading-relaxed text-[#526057]">{sol.description}</p>
+                  <h3 className="text-lg font-bold text-[#0a0a0a]">{sol.title}</h3>
+                  <p className="mt-3 text-xs leading-relaxed text-[#525252]">{sol.description}</p>
                 </div>
                 <div className="mt-8 flex flex-wrap gap-1.5">
                   {sol.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className="rounded-full bg-[#F2F5F0] px-3 py-1 text-[10px] font-medium text-[#526057]"
+                      className="rounded-full bg-[#efefef] px-3 py-1 text-[10px] font-medium text-[#525252]"
                     >
                       {tag}
                     </span>
@@ -353,17 +335,17 @@ export default function Home() {
       </section>
 
       {/* Featured Case Studies */}
-      <section id="case-studies" className="py-24 bg-[#F7F8F5] text-[#171A17] px-6 lg:px-8 border-t border-[#F2F5F0]">
+      <section id="case-studies" className="py-24 bg-[#f6f6f6] text-[#0a0a0a] px-6 lg:px-8 border-t border-[#efefef]">
         <div className="mx-auto max-w-7xl">
           <div className="text-center flex flex-col items-center gap-3 mb-16">
-            <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#38573D]">
-              <span className="h-2 w-2 rounded-full bg-[#79C968]" />
+            <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#262626]">
+              <span className="h-2 w-2 rounded-full bg-[#737373]" />
               Featured Case Studies
             </span>
             <h2 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
-              Real Projects. <span className="italic text-[#4D8B4F]">Real Business Impact.</span>
+              Real Projects. <span className="italic text-[#111111]">Real Business Impact.</span>
             </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#526057]">
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#525252]">
               Explore how Full Stack Solutions transforms complex business challenges into scalable, secure, and high-performing digital experiences.
             </p>
           </div>
@@ -380,21 +362,21 @@ export default function Home() {
                     alt={project.title}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute left-4 top-4 rounded-full bg-white/90 backdrop-blur-sm px-3 py-1 text-[10px] font-bold text-[#171A17]">
+                  <span className="absolute left-4 top-4 rounded-full bg-white/90 backdrop-blur-sm px-3 py-1 text-[10px] font-bold text-[#0a0a0a]">
                     {project.category}
                   </span>
                 </div>
                 <div className="flex-1 p-6 flex flex-col justify-between">
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#4D8B4F]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#111111]">
                       {project.type}
                     </span>
-                    <h3 className="mt-2 text-base font-bold text-[#171A17]">{project.title}</h3>
-                    <p className="mt-2 text-xs leading-relaxed text-[#526057]">{project.description}</p>
+                    <h3 className="mt-2 text-base font-bold text-[#0a0a0a]">{project.title}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-[#525252]">{project.description}</p>
                   </div>
-                  <div className="mt-6 flex items-center justify-between border-t border-[#F2F5F0] pt-4">
-                    <span className="text-xs font-bold text-[#6B2D1A]">{project.metrics}</span>
-                    <span className="flex items-center gap-1 text-[11px] font-semibold text-[#4D8B4F]">
+                  <div className="mt-6 flex items-center justify-between border-t border-[#efefef] pt-4">
+                    <span className="text-xs font-bold text-[#404040]">{project.metrics}</span>
+                    <span className="flex items-center gap-1 text-[11px] font-semibold text-[#111111]">
                       View Case Study
                       <svg className="h-3 w-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -408,74 +390,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Insights Section */}
-      <section id="insights" className="py-24 bg-[#FCFDFB] text-[#171A17] px-6 lg:px-8 border-t border-[#F2F5F0]">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <div className="flex flex-col gap-3">
-              <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#38573D] max-w-max">
-                <span className="h-2 w-2 rounded-full bg-[#6B2D1A]" />
-                Latest Insights
-              </span>
-              <h2 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
-                Technology <span className="italic text-[#4D8B4F]">Insights</span> & <span className="text-[#6B2D1A]">Industry Trends</span>
-              </h2>
-            </div>
-            <Link
-              href="/insights"
-              className="glass-button-secondary max-w-max"
-            >
-              View All Insights
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {blogs.length > 0 ? (
-              blogs.map((blog: any) => (
-                <div
-                  key={blog.id}
-                  className="group relative flex flex-col justify-between rounded-[32px] border border-white bg-[#F7F8F5]/50 p-6 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-md cursor-pointer"
-                >
-                  <div>
-                    <span className="rounded-full bg-[#4D8B4F]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#4D8B4F]">
-                      {blog.category}
-                    </span>
-                    <h3 className="mt-4 text-base font-bold text-[#171A17] leading-snug group-hover:text-[#4D8B4F] transition-colors">
-                      {blog.title}
-                    </h3>
-                  </div>
-                  <div className="mt-6 flex items-center justify-between border-t border-[#F2F5F0] pt-4 text-[10px] text-[#525b54]">
-                    <span>Read Article</span>
-                    <svg className="h-4.5 w-4.5 text-[#4D8B4F] transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-span-3 text-center py-12 text-[#525b54]">
-                Loading latest articles...
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
-      <section id="contact-section" className="py-24 bg-[#F7F8F5] text-[#171A17] px-6 lg:px-8 border-t border-[#F2F5F0]">
+      <section id="contact-section" className="py-24 bg-[#f6f6f6] text-[#0a0a0a] px-6 lg:px-8 border-t border-[#efefef]">
         <div className="mx-auto max-w-3xl">
           <div className="text-center flex flex-col items-center gap-3 mb-12">
-            <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#38573D]">
-              <span className="h-2 w-2 rounded-full bg-[#79C968]" />
+            <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#262626]">
+              <span className="h-2 w-2 rounded-full bg-[#737373]" />
               Contact Us
             </span>
             <h2 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
-              Get a Free <span className="italic text-[#4D8B4F]">Consultation</span>
+              Get a Free <span className="italic text-[#111111]">Consultation</span>
             </h2>
-            <p className="mt-3 text-xs leading-relaxed text-[#526057]">
+            <p className="mt-3 text-xs leading-relaxed text-[#525252]">
               Have a project in mind? Fill out the form below and our team will get back to you within 24 hours.
             </p>
           </div>
@@ -483,37 +409,37 @@ export default function Home() {
           <form onSubmit={handleContactSubmit} className="glass-card p-8 sm:p-12 flex flex-col gap-6">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div className="flex flex-col gap-2">
-                <label htmlFor="form-name" className="text-xs font-semibold text-[#171A17]">Full Name</label>
+                <label htmlFor="form-name" className="text-xs font-semibold text-[#0a0a0a]">Full Name</label>
                 <input
                   type="text"
                   id="form-name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="rounded-2xl border border-[#F2F5F0] bg-white/70 px-4 py-3 text-xs outline-none focus:border-[#4D8B4F] transition-all"
+                  className="rounded-2xl border border-[#efefef] bg-white/70 px-4 py-3 text-xs outline-none focus:border-[#111111] transition-all"
                   placeholder="Enter your name"
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label htmlFor="form-email" className="text-xs font-semibold text-[#171A17]">Email Address</label>
+                <label htmlFor="form-email" className="text-xs font-semibold text-[#0a0a0a]">Email Address</label>
                 <input
                   type="email"
                   id="form-email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="rounded-2xl border border-[#F2F5F0] bg-white/70 px-4 py-3 text-xs outline-none focus:border-[#4D8B4F] transition-all"
+                  className="rounded-2xl border border-[#efefef] bg-white/70 px-4 py-3 text-xs outline-none focus:border-[#111111] transition-all"
                   placeholder="Enter your email"
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="form-message" className="text-xs font-semibold text-[#171A17]">Your Message</label>
+              <label htmlFor="form-message" className="text-xs font-semibold text-[#0a0a0a]">Your Message</label>
               <textarea
                 id="form-message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows={4}
-                className="rounded-2xl border border-[#F2F5F0] bg-white/70 px-4 py-3 text-xs outline-none focus:border-[#4D8B4F] transition-all resize-none"
+                className="rounded-2xl border border-[#efefef] bg-white/70 px-4 py-3 text-xs outline-none focus:border-[#111111] transition-all resize-none"
                 placeholder="Tell us about your project"
               />
             </div>
@@ -521,7 +447,7 @@ export default function Home() {
             <button
               type="submit"
               disabled={formStatus === "sending"}
-              className="mt-2 flex items-center justify-center gap-3 rounded-full bg-gradient-to-b from-[#4FA653] to-[#2E6B32] py-3.5 text-xs font-bold text-white shadow-md transition hover:-translate-y-0.5"
+              className="mt-2 flex items-center justify-center gap-3 rounded-full bg-gradient-to-b from-[#404040] to-[#000000] py-3.5 text-xs font-bold text-white shadow-md transition hover:-translate-y-0.5"
             >
               {formStatus === "sending" ? "Sending..." : "Send Message"}
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -532,7 +458,7 @@ export default function Home() {
             {formStatus !== "idle" && (
               <div
                 className={`mt-4 text-center text-xs font-bold ${
-                  formStatus === "success" ? "text-[#4D8B4F]" : "text-[#6B2D1A]"
+                  formStatus === "success" ? "text-[#111111]" : "text-[#404040]"
                 }`}
               >
                 {formMessage}

@@ -68,6 +68,20 @@ const solutionsMap: Record<string, SolutionData> = {
       { question: "Should we build cross-platform apps or native apps?", answer: "We evaluate your specific performance needs, budget, and timeline to recommend whether React Native, Flutter, or pure native (Swift/Kotlin) is best." }
     ]
   },
+  "digital-marketing": {
+    title: "Digital Marketing",
+    badge: "Growth-Focused Online Marketing",
+    heroLabel: "Digital Marketing",
+    description: "Grow your online visibility and generate qualified leads with search, social, and performance-driven campaigns backed by clear analytics.",
+    features: [
+      { title: "SEO & Content Strategy", text: "Improve search rankings with technical SEO, keyword research, and high-quality content." },
+      { title: "Paid & Social Campaigns", text: "Run targeted ad campaigns across Google, Meta, and LinkedIn to reach the right audience." },
+      { title: "Analytics & Reporting", text: "Track conversions and ROI with transparent dashboards and regular performance reviews." }
+    ],
+    faqs: [
+      { question: "How soon can we expect results from digital marketing?", answer: "Paid campaigns can generate traffic within days, while SEO typically shows measurable gains in 3-6 months." }
+    ]
+  },
   "cloud-solutions": {
     title: "Cloud Solutions",
     badge: "Secure and Scalable Cloud Infrastructures",
@@ -157,23 +171,23 @@ export default async function SolutionPage(props: PageProps) {
   }
 
   return (
-    <div className="bg-[#F7F8F5] text-[#171A17] font-sans antialiased min-h-screen">
+    <div className="bg-[#f6f6f6] text-[#0a0a0a] font-sans antialiased min-h-screen">
       {/* Hero Banner */}
-      <section className="relative py-28 px-6 lg:px-8 bg-gradient-to-br from-[#FCFDFB] to-[#F2F5F0] border-b border-[#F2F5F0]">
+      <section className="relative py-28 px-6 lg:px-8 bg-gradient-to-br from-[#fcfcfc] to-[#efefef] border-b border-[#efefef]">
         <div className="mx-auto max-w-5xl text-center flex flex-col gap-4">
           <div className="flex justify-center">
-            <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#477B4B]">
-              <span className="h-2 w-2 rounded-full bg-[#79C968]" />
+            <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#1f1f1f]">
+              <span className="h-2 w-2 rounded-full bg-[#737373]" />
               {data.heroLabel}
             </span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-serif font-bold tracking-tight text-[#171917] leading-[1.1]">
+          <h1 className="text-4xl sm:text-6xl font-serif font-bold tracking-tight text-[#0a0a0a] leading-[1.1]">
             {data.title}
           </h1>
-          <p className="text-xs font-semibold text-[#C59B27] tracking-wider uppercase">
+          <p className="text-xs font-semibold text-[#737373] tracking-wider uppercase">
             {data.badge}
           </p>
-          <p className="mt-4 mx-auto max-w-3xl text-sm leading-relaxed text-[#545B56]">
+          <p className="mt-4 mx-auto max-w-3xl text-sm leading-relaxed text-[#525252]">
             {data.description}
           </p>
         </div>
@@ -181,15 +195,15 @@ export default async function SolutionPage(props: PageProps) {
 
       {/* Features Grid */}
       <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto">
-        <h2 className="text-center font-serif text-3xl font-bold mb-16 text-[#171a17]">
+        <h2 className="text-center font-serif text-3xl font-bold mb-16 text-[#0a0a0a]">
           Key Capabilities
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {data.features.map((feat, idx) => (
             <div key={idx} className="glass-card p-8 flex flex-col gap-4">
-              <span className="text-2xl font-serif font-black text-[#4D8B4F]/20">0{idx + 1}</span>
-              <h3 className="text-lg font-bold text-[#171a17]">{feat.title}</h3>
-              <p className="text-xs leading-relaxed text-[#525b54]">{feat.text}</p>
+              <span className="text-2xl font-serif font-black text-[#111111]/20">0{idx + 1}</span>
+              <h3 className="text-lg font-bold text-[#0a0a0a]">{feat.title}</h3>
+              <p className="text-xs leading-relaxed text-[#525252]">{feat.text}</p>
             </div>
           ))}
         </div>
@@ -197,16 +211,16 @@ export default async function SolutionPage(props: PageProps) {
 
       {/* FAQ Section */}
       {data.faqs && data.faqs.length > 0 && (
-        <section className="py-24 bg-[#FCFDFB] px-6 lg:px-8 border-t border-[#F2F5F0]">
+        <section className="py-24 bg-[#fcfcfc] px-6 lg:px-8 border-t border-[#efefef]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-center font-serif text-3xl font-bold mb-16 text-[#171a17]">
+            <h2 className="text-center font-serif text-3xl font-bold mb-16 text-[#0a0a0a]">
               Frequently Asked Questions
             </h2>
             <div className="flex flex-col gap-6">
               {data.faqs.map((faq, idx) => (
-                <div key={idx} className="border-b border-[#F2F5F0] pb-6 flex flex-col gap-2">
-                  <h3 className="text-sm font-bold text-[#171A17]">{faq.question}</h3>
-                  <p className="text-xs leading-relaxed text-[#525b54]">{faq.answer}</p>
+                <div key={idx} className="border-b border-[#efefef] pb-6 flex flex-col gap-2">
+                  <h3 className="text-sm font-bold text-[#0a0a0a]">{faq.question}</h3>
+                  <p className="text-xs leading-relaxed text-[#525252]">{faq.answer}</p>
                 </div>
               ))}
             </div>
@@ -215,12 +229,12 @@ export default async function SolutionPage(props: PageProps) {
       )}
 
       {/* Contact CTA */}
-      <section className="py-20 bg-[#F7F8F5] px-6 lg:px-8 border-t border-[#F2F5F0] text-center">
+      <section className="py-20 bg-[#f6f6f6] px-6 lg:px-8 border-t border-[#efefef] text-center">
         <div className="max-w-xl mx-auto flex flex-col gap-6 items-center">
-          <h2 className="font-serif text-3xl font-bold text-[#171a17]">
+          <h2 className="font-serif text-3xl font-bold text-[#0a0a0a]">
             Ready to Build Your Solution?
           </h2>
-          <p className="text-xs text-[#525b54] leading-relaxed">
+          <p className="text-xs text-[#525252] leading-relaxed">
             Let us know what digital system your business needs to scale, and we will formulate an architectural roadmap within one business day.
           </p>
           <Link
