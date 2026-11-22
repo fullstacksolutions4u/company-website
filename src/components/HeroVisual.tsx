@@ -41,8 +41,8 @@ export default function HeroVisual() {
       accent: "green",
       description: "Intelligent systems that automate workflows, accelerate innovation, and enhance business productivity.",
       graphic: (
-        <div className="relative h-28 w-28 rounded-full bg-[#111111]/10 flex items-center justify-center">
-          <svg className="h-14 w-14 text-[#111111] animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+        <div className="relative h-28 w-28 rounded-full bg-accent/10 flex items-center justify-center">
+          <svg className="h-14 w-14 text-accent animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
           </svg>
         </div>
@@ -73,8 +73,8 @@ export default function HeroVisual() {
         <div className="h-28 w-full flex items-end justify-center gap-2 pb-4">
           <div className="w-4 bg-[#efefef] rounded-t h-8" />
           <div className="w-4 bg-[#efefef] rounded-t h-14" />
-          <div className="w-4 bg-[#525252]/30 rounded-t h-20" />
-          <div className="w-4 bg-[#525252] rounded-t h-24" />
+          <div className="w-4 bg-muted/30 rounded-t h-20" />
+          <div className="w-4 bg-muted rounded-t h-24" />
         </div>
       )
     },
@@ -85,8 +85,8 @@ export default function HeroVisual() {
       accent: "green",
       description: "Building robust, scalable, and future-ready enterprise applications.",
       graphic: (
-        <div className="relative h-28 w-28 rounded-full bg-[#111111]/10 flex items-center justify-center">
-          <svg className="h-14 w-14 text-[#111111]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+        <div className="relative h-28 w-28 rounded-full bg-accent/10 flex items-center justify-center">
+          <svg className="h-14 w-14 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
           </svg>
         </div>
@@ -116,14 +116,14 @@ export default function HeroVisual() {
       ref={containerRef}
       onMouseEnter={() => { pausedRef.current = true; }}
       onMouseLeave={() => { pausedRef.current = false; }}
-      className="relative mx-auto w-full max-w-xl h-[560px] flex items-center justify-center overflow-visible select-none"
+      className="relative mx-auto w-full max-w-xl h-140 flex items-center justify-center overflow-visible select-none"
       style={{
         perspective: "1400px",
       }}
     >
       {/* 3D Cylinder Carousel */}
       <div
-        className="relative w-full h-[400px] flex items-center justify-center"
+        className="relative w-full h-100 flex items-center justify-center"
         style={{
           transformStyle: "preserve-3d",
           transform: `rotateY(${rotation}deg)`,
@@ -137,7 +137,7 @@ export default function HeroVisual() {
           return (
             <div
               key={card.id}
-              className="absolute w-[240px] h-[370px] rounded-[28px] border border-white bg-white/95 p-6 shadow-xl backdrop-blur-md transition-all duration-300 flex flex-col justify-between"
+              className="absolute w-60 h-92.5 rounded-[28px] border border-white bg-white/95 p-6 shadow-xl backdrop-blur-md transition-all duration-300 flex flex-col justify-between"
               style={{
                 transform: `rotateY(${cardAngle}deg) translateZ(${radius}px)`,
                 backfaceVisibility: "hidden",
@@ -146,15 +146,15 @@ export default function HeroVisual() {
               <div>
                 <span
                   className={`text-[9px] font-bold uppercase tracking-wider ${
-                    card.accent === "green" ? "text-[#111111]" : "text-[#525252]"
+                    card.accent === "green" ? "text-accent" : "text-muted"
                   }`}
                 >
                   {card.badge}
                 </span>
-                <h3 className="mt-2 text-md font-bold text-[#0a0a0a] font-serif leading-tight">
+                <h3 className="mt-2 text-md font-bold text-foreground font-serif leading-tight">
                   {card.title}
                 </h3>
-                <p className="mt-3 text-[10px] leading-relaxed text-[#525252]">
+                <p className="mt-3 text-[10px] leading-relaxed text-muted">
                   {card.description}
                 </p>
               </div>
@@ -164,7 +164,7 @@ export default function HeroVisual() {
                 {card.graphic}
               </div>
 
-              <span className="text-[8px] font-bold text-[#525252] uppercase tracking-wider">
+              <span className="text-[8px] font-bold text-muted uppercase tracking-wider">
                 FULL STACK SOLUTIONS
               </span>
             </div>
