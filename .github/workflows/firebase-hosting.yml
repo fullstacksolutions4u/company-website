@@ -28,18 +28,24 @@ jobs:
       - run: npm run build # static export -> ./out
 
       # Keyless auth: exchanges the GitHub OIDC token for Google credentials.
-      # Sets GOOGLE_APPLICATION_CREDENTIALS, which firebase-tools picks up.
+      # Outputs a short-lived access token, passed to firebase-tools below.
       - id: auth
         if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
         uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
           service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/firebase
 
       - name: Deploy (live)
         if: github.event_name == 'push'
+        env:
+          GOOGLE_OAUTH_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
         run: npx --yes firebase-tools deploy --only hosting --project "$PROJECT_ID"
 
       - name: Deploy (preview)
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GOOGLE_OAUTH_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
         run: npx --yes firebase-tools hosting:channel:deploy "pr-${{ github.event.number }}" --expires 7d --project "$PROJECT_ID"
