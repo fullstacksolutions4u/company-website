@@ -20,7 +20,7 @@ export default function ContactForm() {
 
     setStatus("sending");
     try {
-      await submitEnquiry({ ...data, replyto: data.email });
+      await submitEnquiry(data);
       setStatus("submitted");
       form.reset();
     } catch (err) {
@@ -62,15 +62,19 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-foreground">
-            Email
+          <label htmlFor="phone" className="block text-sm font-medium text-foreground">
+            Mobile number
           </label>
           <input
-            id="email"
-            name="email"
-            type="email"
+            id="phone"
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            pattern="[0-9+\-\s()]{7,20}"
+            title="Enter a valid mobile number"
             required
-            placeholder="jane@company.com"
+            placeholder="+91 98765 43210"
             className="mt-2 w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 focus:border-accent focus:outline-none"
           />
         </div>

@@ -127,7 +127,7 @@ export default function Home() {
 
   // Form states
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
@@ -149,9 +149,14 @@ export default function Home() {
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name.trim() || !email.trim() || !message.trim()) {
+    if (!name.trim() || !phone.trim() || !message.trim()) {
       setFormStatus("error");
       setFormMessage("Please fill in all fields.");
+      return;
+    }
+    if (phone.replace(/\D/g, "").length < 7) {
+      setFormStatus("error");
+      setFormMessage("Please enter a valid mobile number.");
       return;
     }
     // Hidden honeypot field: real users never fill it in.
@@ -160,11 +165,11 @@ export default function Home() {
 
     setFormStatus("sending");
     try {
-      await submitEnquiry({ name, email, message, replyto: email });
+      await submitEnquiry({ name, phone, message });
       setFormStatus("success");
       setFormMessage("Message sent successfully! We'll get back to you within 24 hours.");
       setName("");
-      setEmail("");
+      setPhone("");
       setMessage("");
     } catch (err) {
       setFormStatus("error");
@@ -350,14 +355,16 @@ export default function Home() {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label htmlFor="form-email" className="text-xs font-semibold text-foreground">Email Address</label>
+                <label htmlFor="form-phone" className="text-xs font-semibold text-foreground">Mobile Number</label>
                 <input
-                  type="email"
-                  id="form-email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  id="form-phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="rounded-2xl border border-[#efefef] bg-white/70 px-4 py-3 text-xs outline-none focus:border-accent transition-all"
-                  placeholder="Enter your email"
+                  placeholder="Enter your mobile number"
                 />
               </div>
             </div>
