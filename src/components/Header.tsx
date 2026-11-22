@@ -44,8 +44,8 @@ export default function Header() {
             height={32}
             className="h-8 w-8 rounded-lg object-contain"
           />
-          <span className="text-xl font-bold tracking-tight text-[#0a0a0a]">
-            Full Stack<span className="text-[#111111]"> Solutions</span>
+          <span className="text-xl font-bold tracking-tight text-foreground">
+            Full Stack<span className="text-accent"> Solutions</span>
           </span>
         </Link>
 
@@ -53,8 +53,8 @@ export default function Header() {
         <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
           <Link
             href="/"
-            className={`text-sm font-medium transition-colors hover:text-[#111111] ${
-              pathname === "/" ? "text-[#111111]" : "text-[#525252]"
+            className={`text-sm font-medium transition-colors hover:text-accent ${
+              pathname === "/" ? "text-accent" : "text-muted"
             }`}
           >
             Home
@@ -64,8 +64,8 @@ export default function Header() {
             <Link
               key={sol.slug}
               href={`/solutions/${sol.slug}`}
-              className={`text-sm font-medium transition-colors hover:text-[#111111] ${
-                pathname === `/solutions/${sol.slug}` ? "text-[#111111]" : "text-[#525252]"
+              className={`text-sm font-medium transition-colors hover:text-accent ${
+                pathname === `/solutions/${sol.slug}` ? "text-accent" : "text-muted"
               }`}
             >
               {sol.title}
@@ -96,7 +96,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="flex items-center justify-center rounded-full border border-white bg-white/30 p-2.5 text-[#0a0a0a] lg:hidden backdrop-blur-md shadow-sm"
+          className="flex items-center justify-center rounded-full border border-white bg-white/30 p-2.5 text-foreground lg:hidden backdrop-blur-md shadow-sm"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -114,12 +114,12 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {open && (
-        <div className="fixed inset-x-0 top-[60px] z-45 border-b border-white bg-white/95 p-6 backdrop-blur-xl lg:hidden max-h-[80vh] overflow-y-auto shadow-lg animate-in slide-in-from-top duration-200">
+        <div className="fixed inset-x-0 top-15 z-45 border-b border-white bg-white/95 p-6 backdrop-blur-xl lg:hidden max-h-[80vh] overflow-y-auto shadow-lg animate-in slide-in-from-top duration-200">
           <nav className="flex flex-col gap-4">
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="text-sm font-semibold text-[#0a0a0a] hover:text-[#111111]"
+              className="text-sm font-semibold text-foreground hover:text-accent"
             >
               Home
             </Link>
@@ -128,7 +128,7 @@ export default function Header() {
                 key={sol.slug}
                 href={`/solutions/${sol.slug}`}
                 onClick={() => setOpen(false)}
-                className="text-sm font-semibold text-[#0a0a0a] hover:text-[#111111]"
+                className="text-sm font-semibold text-foreground hover:text-accent"
               >
                 {sol.title}
               </Link>
