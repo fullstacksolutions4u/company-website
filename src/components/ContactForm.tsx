@@ -2,15 +2,31 @@
 
 import { useState, type FormEvent } from "react";
 import Icon from "@/components/Icon";
+import { submitEnquiry } from "@/lib/web3forms";
 
 const budgets = ["Under $10k", "$10k - $50k", "$50k - $150k", "$150k+"];
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "submitted">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "submitted" | "error">("idle");
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("submitted");
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    // Hidden honeypot field: real users never fill it in.
+    if (data.botcheck) return;
+    delete data.botcheck;
+
+    setStatus("sending");
+    try {
+      await submitEnquiry({ ...data, replyto: data.email });
+      setStatus("submitted");
+      form.reset();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setStatus("error");
+    }
   }
 
   if (status === "submitted") {
@@ -30,6 +46,7 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-foreground">
@@ -110,11 +127,17 @@ export default function ContactForm() {
 
       <button
         type="submit"
+        disabled={status === "sending"}
         className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-background transition hover:opacity-90"
       >
-        Send Message
+        {status === "sending" ? "Sending..." : "Send Message"}
         <Icon name="arrowRight" className="h-4 w-4" />
       </button>
+      {status === "error" && (
+        <p role="alert" className="text-center text-sm text-red-600">
+          {error}
+        </p>
+      )}
     </form>
   );
 }

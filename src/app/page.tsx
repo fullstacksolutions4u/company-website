@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import HeroVisual from "@/components/HeroVisual";
+import { submitEnquiry } from "@/lib/web3forms";
 
 const heroSlides = [
   {
@@ -16,15 +17,12 @@ const heroSlides = [
 ];
 
 const rotatingServices = [
-  "AI Solutions.",
-  "Custom Software.",
-  "Web Development.",
-  "Mobile App Development.",
-  "Cloud Solutions.",
-  "DevOps.",
-  "UI/UX Design.",
-  "Data Analytics.",
-  "QA & Testing."
+  "AI Solutions",
+  "Custom Web Applications",
+  "Web Development",
+  "Mobile App Development",
+  "Cloud Solutions",
+  "UI/UX Design"
 ];
 
 const whyChooseUs = [
@@ -90,37 +88,6 @@ const whyChooseUs = [
   }
 ];
 
-const solutionsShowcase = [
-  {
-    title: "Enterprise Software",
-    description: "Scalable, secure, and future-ready enterprise applications.",
-    tags: ["Architecture", "APIs", "Integration", "Performance"],
-    accent: "green",
-    url: "/solutions/custom-software"
-  },
-  {
-    title: "AI & Automation",
-    description: "Intelligent solutions that automate workflows and accelerate innovation.",
-    tags: ["AI", "Automation", "Analytics", "Innovation"],
-    accent: "brown",
-    url: "/solutions/ai-solutions"
-  },
-  {
-    title: "Cloud & DevOps",
-    description: "Reliable cloud infrastructure with seamless deployment and continuous delivery.",
-    tags: ["Cloud", "DevOps", "CI/CD", "Kubernetes"],
-    accent: "green",
-    url: "/solutions/cloud-solutions"
-  },
-  {
-    title: "UI/UX Excellence",
-    description: "Beautiful, intuitive experiences designed for engagement and usability.",
-    tags: ["UX", "UI", "Prototyping", "Accessibility"],
-    accent: "brown",
-    url: "/solutions/ui-ux-design"
-  }
-];
-
 const caseStudies = [
   {
     id: "case-1",
@@ -180,22 +147,29 @@ export default function Home() {
     };
   }, []);
 
-  const handleContactSubmit = async (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name || !email || !message) {
+    if (!name.trim() || !email.trim() || !message.trim()) {
       setFormStatus("error");
       setFormMessage("Please fill in all fields.");
       return;
     }
+    // Hidden honeypot field: real users never fill it in.
+    const honeypot = new FormData(e.currentTarget).get("botcheck");
+    if (honeypot) return;
+
     setFormStatus("sending");
-    // Simulate contact submission
-    setTimeout(() => {
+    try {
+      await submitEnquiry({ name, email, message, replyto: email });
       setFormStatus("success");
-      setFormMessage("Message Sent Successfully!");
+      setFormMessage("Message sent successfully! We'll get back to you within 24 hours.");
       setName("");
       setEmail("");
       setMessage("");
-    }, 1500);
+    } catch (err) {
+      setFormStatus("error");
+      setFormMessage(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -203,17 +177,17 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden bg-foreground text-white py-20 px-6 lg:px-8">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 grayscale bg-cover bg-center transition-all duration-1000 opacity-30 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80')]" />
-          <div className="absolute inset-0 bg-linear-to-tr from-accent/20 via-[#404040]/25 to-black/80 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-cover bg-center bg-[url('/banner.webp')]" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/35 to-black/10" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl w-full grid grid-cols-1 gap-12 lg:grid-cols-12 items-center">
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <h1 className="text-4xl font-serif font-bold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1] min-h-40 sm:min-h-35">
-              Building Intelligent{" "}
-              <span className="text-[#d4d4d4]">Solutions</span>{" "}
+            <h1 className="text-4xl font-serif font-bold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1] min-h-40 sm:min-h-35 lg:min-h-52">
+              Build a Stronger{" "}
+              <span className="text-[#d4d4d4]">Digital Presence</span>{" "}
               <span className="block sm:inline text-white/95">
-                with {rotatingServices[serviceIndex]}
+                with <span className="text-[#1ba8bd]">{rotatingServices[serviceIndex]}</span>
               </span>
             </h1>
 
@@ -234,12 +208,12 @@ export default function Home() {
                 </span>
               </button>
 
-              <button
-                onClick={() => document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" })}
+              <Link
+                href="/solutions"
                 className="group relative flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 px-7 py-3.5 text-xs font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5"
               >
                 Explore Services
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -253,11 +227,7 @@ export default function Home() {
       <section id="why-us" className="py-24 bg-[#f6f6f6] text-foreground px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center flex flex-col items-center gap-3">
-            <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#262626]">
-              <span className="h-2 w-2 rounded-full bg-[#737373]" />
-              Why Full Stack Solutions
-            </span>
-            <h2 className="mt-2 font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
+            <h2 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
               Why Businesses Choose <span className="italic text-accent">Full Stack Solutions</span>
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
@@ -269,64 +239,23 @@ export default function Home() {
             {whyChooseUs.map((item) => (
               <div
                 key={item.id}
-                className="group relative flex flex-col justify-between rounded-4xl border border-white bg-white/40 p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/65 hover:shadow-md cursor-pointer"
+                className="group relative flex flex-col overflow-hidden rounded-4xl border border-white bg-white/40 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/65 hover:shadow-md cursor-pointer"
               >
-                <div>
+                <div className="relative aspect-3/2 w-full overflow-hidden bg-[#050b14]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/why-us/${item.id}.webp`}
+                    alt={item.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-8">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-accent mb-6">
                     {item.icon}
                   </div>
                   <h3 className="text-lg font-bold text-foreground">{item.title}</h3>
                   <p className="mt-3 text-xs leading-relaxed text-muted">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions Showcase */}
-      <section id="solutions" className="py-24 bg-background text-foreground px-6 lg:px-8 border-t border-[#efefef]">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-            <div className="flex flex-col gap-3">
-              <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#262626] max-w-max">
-                <span className="h-2 w-2 rounded-full bg-[#737373]" />
-                Our Solutions
-              </span>
-              <h2 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">
-                Engineering <span className="italic text-accent">Beyond</span> Technology
-              </h2>
-            </div>
-            <Link
-              href="/solutions"
-              className="glass-button-secondary max-w-max"
-            >
-              Explore Solutions
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {solutionsShowcase.map((sol, idx) => (
-              <div
-                key={idx}
-                className="group relative flex flex-col justify-between rounded-4xl border border-white/60 bg-white/20 p-8 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-md"
-              >
-                <div>
-                  <h3 className="text-lg font-bold text-foreground">{sol.title}</h3>
-                  <p className="mt-3 text-xs leading-relaxed text-muted">{sol.description}</p>
-                </div>
-                <div className="mt-8 flex flex-wrap gap-1.5">
-                  {sol.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="rounded-full bg-[#efefef] px-3 py-1 text-[10px] font-medium text-muted"
-                    >
-                      {tag}
-                    </span>
-                  ))}
                 </div>
               </div>
             ))}
@@ -407,6 +336,7 @@ export default function Home() {
           </div>
 
           <form onSubmit={handleContactSubmit} className="glass-card p-8 sm:p-12 flex flex-col gap-6">
+            <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div className="flex flex-col gap-2">
                 <label htmlFor="form-name" className="text-xs font-semibold text-foreground">Full Name</label>

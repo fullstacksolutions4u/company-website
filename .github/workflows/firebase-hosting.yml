@@ -26,6 +26,8 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build # static export -> ./out
+        env:
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
 
       # Keyless auth: exchanges the GitHub OIDC token for Google credentials.
       # Outputs a short-lived access token, passed to firebase-tools below.
