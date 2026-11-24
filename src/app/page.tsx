@@ -8,11 +8,11 @@ import { submitEnquiry } from "@/lib/web3forms";
 const heroSlides = [
   {
     badge: "Our Company",
-    description: "We empower businesses of all sizes to thrive by building robust software solutions that drive innovation and scale modern digital enterprise systems."
+    description: "We turn ideas into robust digital products that help your business innovate, scale and stand out online."
   },
   {
     badge: "Welcome to Full Stack Solutions",
-    description: "We empower businesses of all sizes to thrive by building robust software solutions that drive innovation and scale modern digital enterprise systems."
+    description: "We turn ideas into robust digital products that help your business innovate, scale and stand out online."
   }
 ];
 

@@ -20,7 +20,7 @@ export default function HeroVisual() {
   useEffect(() => {
     let animationFrameId: number;
     let last = performance.now();
-    const SPEED = 12; // degrees per second
+    const SPEED = 30; // degrees per second
     const tick = (now: number) => {
       const dt = (now - last) / 1000;
       last = now;

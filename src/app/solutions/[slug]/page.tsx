@@ -8,6 +8,8 @@ type SolutionData = {
   description: string;
   features: { title: string; text: string }[];
   faqs: { question: string; answer: string }[];
+  heroImage?: string; // dark banner behind the hero text
+  featureImages?: string[]; // one image per feature card
 };
 
 const solutionsMap: Record<string, SolutionData> = {
@@ -15,6 +17,8 @@ const solutionsMap: Record<string, SolutionData> = {
     title: "AI Solutions",
     badge: "Next-Gen AI & Core Orchestration Platforms",
     heroLabel: "Artificial Intelligence",
+    heroImage: "/services/ai-hero.webp",
+    featureImages: ["/services/ai-1.webp", "/services/ai-2.webp", "/services/ai-3.webp"],
     description: "Automate repetitive workflows, unlock predictive capabilities, and drive business decision-making with custom-designed neural networks and Large Language Model integrations.",
     features: [
       { title: "Generative AI Integration", text: "Incorporate LLMs into your customer service, content generation, and product workflows." },
@@ -44,6 +48,7 @@ const solutionsMap: Record<string, SolutionData> = {
     title: "Web Development",
     badge: "Modern, Scalable Web Applications",
     heroLabel: "Web Applications",
+    featureImages: ["/services/web-1.webp", "/services/web-2.webp", "/services/web-3.webp"],
     description: "Construct responsive, ultra-fast web apps engineered on modern React framework paradigms to optimize user conversion and platform adoption.",
     features: [
       { title: "Full-Stack React Solutions", text: "Utilize state-of-the-art Next.js architectures to optimize load times and UI state." },
@@ -58,6 +63,8 @@ const solutionsMap: Record<string, SolutionData> = {
     title: "Mobile Development",
     badge: "High-Performance Mobile Apps",
     heroLabel: "Mobile Applications",
+    heroImage: "/services/mobile-hero.webp",
+    featureImages: ["/services/mobile-1.webp", "/services/mobile-2.webp", "/services/mobile-3.webp"],
     description: "Develop native and cross-platform mobile apps focusing on buttery-smooth 60fps animations, rock-solid security, offline-first architectures, and frictionless user experiences.",
     features: [
       { title: "React Native & Flutter", text: "Build cross-platform apps with a single, highly performant codebase to reach both iOS and Android." },
@@ -72,6 +79,8 @@ const solutionsMap: Record<string, SolutionData> = {
     title: "Digital Marketing",
     badge: "Growth-Focused Online Marketing",
     heroLabel: "Digital Marketing",
+    heroImage: "/services/marketing-hero.webp",
+    featureImages: ["/services/marketing-1.webp", "/services/marketing-2.webp", "/services/marketing-3.webp"],
     description: "Grow your online visibility and generate qualified leads with search, social, and performance-driven campaigns backed by clear analytics.",
     features: [
       { title: "SEO & Content Strategy", text: "Improve search rankings with technical SEO, keyword research, and high-quality content." },
@@ -173,21 +182,46 @@ export default async function SolutionPage(props: PageProps) {
   return (
     <div className="bg-[#f6f6f6] text-foreground font-sans antialiased min-h-screen">
       {/* Hero Banner */}
-      <section className="relative py-28 px-6 lg:px-8 bg-linear-to-br from-background to-[#efefef] border-b border-[#efefef]">
-        <div className="mx-auto max-w-5xl text-center flex flex-col gap-4">
+      <section
+        className={`relative overflow-hidden py-28 px-6 lg:px-8 border-b border-[#efefef] ${
+          data.heroImage ? "bg-[#050b14]" : "bg-linear-to-br from-background to-[#efefef]"
+        }`}
+      >
+        {data.heroImage && (
+          <>
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url('${data.heroImage}')` }}
+            />
+            <div className="absolute inset-0 bg-black/45" />
+          </>
+        )}
+        <div className="relative mx-auto max-w-5xl text-center flex flex-col gap-4">
           <div className="flex justify-center">
             <span className="glass-pill text-[11px] font-bold uppercase tracking-wider text-[#1f1f1f]">
               <span className="h-2 w-2 rounded-full bg-[#737373]" />
               {data.heroLabel}
             </span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-serif font-bold tracking-tight text-foreground leading-[1.1]">
+          <h1
+            className={`text-4xl sm:text-6xl font-serif font-bold tracking-tight leading-[1.1] ${
+              data.heroImage ? "text-white" : "text-foreground"
+            }`}
+          >
             {data.title}
           </h1>
-          <p className="text-xs font-semibold text-[#737373] tracking-wider uppercase">
+          <p
+            className={`text-xs font-semibold tracking-wider uppercase ${
+              data.heroImage ? "text-[#7fd6e4]" : "text-[#737373]"
+            }`}
+          >
             {data.badge}
           </p>
-          <p className="mt-4 mx-auto max-w-3xl text-sm leading-relaxed text-muted">
+          <p
+            className={`mt-4 mx-auto max-w-3xl text-sm leading-relaxed ${
+              data.heroImage ? "text-white/80" : "text-muted"
+            }`}
+          >
             {data.description}
           </p>
         </div>
@@ -200,10 +234,23 @@ export default async function SolutionPage(props: PageProps) {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {data.features.map((feat, idx) => (
-            <div key={idx} className="glass-card p-8 flex flex-col gap-4">
-              <span className="text-2xl font-serif font-black text-accent/20">0{idx + 1}</span>
-              <h3 className="text-lg font-bold text-foreground">{feat.title}</h3>
-              <p className="text-xs leading-relaxed text-muted">{feat.text}</p>
+            <div key={idx} className="glass-card overflow-hidden flex flex-col">
+              {data.featureImages?.[idx] && (
+                <div className="relative aspect-3/2 w-full overflow-hidden bg-[#050b14]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={data.featureImages[idx]}
+                    alt={feat.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              )}
+              <div className="p-8 flex flex-col gap-4">
+                <span className="text-2xl font-serif font-black text-accent/20">0{idx + 1}</span>
+                <h3 className="text-lg font-bold text-foreground">{feat.title}</h3>
+                <p className="text-xs leading-relaxed text-muted">{feat.text}</p>
+              </div>
             </div>
           ))}
         </div>
